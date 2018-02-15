@@ -1,0 +1,16 @@
+PIPELINE:
+Run poses Visual in the dataset, which will output a husky_isam_trajectory in the Results/ folder
+
+run pvisualize with -f as the Results/husky_isam_trajectory file and -cd as the DataSet/AICP/isam-clouds/ directory
+
+convert -i DataSet/AICP/posesFromAICP.txt -o DataSet/AICP/husky_isam_trajectory.txt -a DataSet/AICP/AICPClouds/ -s DataSet/AICP/isam-clouds/
+This will convert the poses and the point clouds from relative to global reference frame
+
+posesVisual -i DataSet/AICP/husky_isam_trajectory -f DataSet/AICP/posesFromAICP.txt -cd DataSet/AICP/isam-clouds/ -t 2 -s 2 -r 0.5
+This will create the pairings btween loop closures and modify the husky_isam_trajectory.txt file with the loop closures
+
+pvisualize -f Results/husky_isam_trajectory.txt -cd DataSet/AICP/isam-clouds/
+This will output a list of poses at Results/poses.txt and Results/map_0.pcd which are the corrected global map + poses estimates
+
+visualize_path -f <path/to/poses.txt> -i 80 -n "Corrected Poses" -cd <path/to/clouds>
+This will print the pose to Director (Pose defined as "x y z yaw pitch roll") in the channel indicated by -i with the name indicated by -n

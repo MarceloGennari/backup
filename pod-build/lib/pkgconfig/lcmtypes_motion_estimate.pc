@@ -1,0 +1,11 @@
+prefix=/home/marcelo/rpg-navigation/software/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: lcmtypes_motion_estimate
+Description: LCM types for motion_estimate
+Requires:  lcm
+Version: 0.0.0
+Libs: -L${libdir}  -llcmtypes_motion_estimate
+Cflags: -I${includedir} 

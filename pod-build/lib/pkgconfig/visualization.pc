@@ -1,0 +1,11 @@
+prefix=/home/marcelo/rpg-navigation/software/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: visualization
+Description: visualization
+Requires:  lcm
+Version: 0.0.1
+Libs: -L${libdir}  -llcmtypes_motion_estimate -lvs_vis -lglut -lgthread-2.0
+Cflags: -I${includedir} 
